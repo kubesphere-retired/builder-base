@@ -28,5 +28,15 @@ docker tag kubespheredev/builder-base kubespheredev/builder-base:advanced-2.1.0-
         }
       }
     }
+    stage('update language image'){
+      when{
+        branch 'master'
+      }
+      steps{
+         build job:'../builder-maven/master', wait: false
+         build job:'../builder-nodejs/master', wait: false
+         build job:'../builder-go/master', wait: false
+      }
+    }
   }
 }
