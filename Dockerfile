@@ -25,6 +25,16 @@ RUN curl -f -o ./endpoint-repo-1.7-1.x86_64.rpm https://packages.endpoint.com/rh
 # USER jenkins
 WORKDIR /home/jenkins
 
+ENV SONAR_SCANNER_VERSION 3.3.0.1492
+
+RUN curl -o sonar_scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip && \
+    unzip sonar_scanner.zip && rm sonar_scanner.zip \
+    && rm -rf sonar-scanner-$SONAR_SCANNER_VERSION-linux/jre && \
+    sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' /home/jenkins/sonar-scanner-$SONAR_SCANNER_VERSION-linux/bin/sonar-scanner && \
+    mv /home/jenkins/sonar-scanner-$SONAR_SCANNER_VERSION-linux /usr/bin
+
+ENV PATH $PATH:/usr/bin/sonar-scanner-$SONAR_SCANNER_VERSION-linux/bin
+
 # Docker
 ENV DOCKER_VERSION 18.06.0
 RUN curl -f https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION-ce.tgz | tar xvz && \
