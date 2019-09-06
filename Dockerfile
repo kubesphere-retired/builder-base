@@ -9,7 +9,8 @@ RUN yum install -y epel-release && \
   zip \
   bzip2 \
   python-pip \
-  java-1.8.0-openjdk
+  java-1.8.0-openjdk && \
+  yum -y clean all --enablerepo='*'
 
 
 # Set the locale(en_US.UTF-8)
