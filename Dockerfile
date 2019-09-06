@@ -8,7 +8,8 @@ RUN yum install -y epel-release && \
   wget \
   zip \
   bzip2 \
-  python-pip
+  python-pip \
+  java-1.8.0-openjdk
 
 
 # Set the locale(en_US.UTF-8)
