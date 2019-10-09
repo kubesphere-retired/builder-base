@@ -32,9 +32,8 @@ RUN curl -o sonar_scanner.zip https://binaries.sonarsource.com/Distribution/sona
 
 ENV PATH $PATH:/usr/bin/sonar-scanner-$SONAR_SCANNER_VERSION-linux/bin
 
-# kubectl
 COPY ./ ./
-RUN ./hack/install_utils.sh
+RUN ./hack/install_utils.sh && rm -rf ./*
 
 CMD ["docker","version"]
 
