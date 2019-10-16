@@ -8,10 +8,31 @@ RUN yum install -y epel-release && \
   wget \
   zip \
   bzip2 \
+  gcc \
+  gcc-c++ \
+  curl-devel \
+  autoconf \
+  expat-devel \
+  gettext-devel \
+  openssl-devel \
+  perl-devel \
+  zlib-devel \
   python-pip \
-  java-1.8.0-openjdk \
-  git && \
+  java-1.8.0-openjdk && \
   yum -y clean all --enablerepo='*'
+
+RUN wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz && \
+    tar zxvf git-2.9.5.tar.gz && \
+    cd git-2.9.5 && \
+    make configure && \
+    ./configure prefix=/usr/local/git/ && \
+    make && \
+    make install && \
+    mv /usr/local/git/bin/git /usr/bin/ && \
+    cd ..&& \
+    rm -rf git-2.9.5.tar.gz git-2.9.5 && \
+    git version
+
 
 
 # Set the locale(en_US.UTF-8)
