@@ -29,6 +29,8 @@ RUN wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz &
     make && \
     make install && \
     mv /usr/local/git/bin/git /usr/bin/ && \
+    cd ..&& \
+    rm -rf git-2.9.5.tar.gz git-2.9.5 && \
     git version
 
 
