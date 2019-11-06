@@ -10,7 +10,7 @@ pipeline {
       steps {
         container('base') {
           sh '''docker build -t kubespheredev/builder-base .
-docker tag kubespheredev/builder-base kubespheredev/builder-base:advanced-2.1.0-dev'''
+docker tag kubespheredev/builder-base kubespheredev/builder-base:2.1.0'''
         }
 
       }
