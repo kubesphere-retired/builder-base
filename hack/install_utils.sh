@@ -6,14 +6,14 @@ ARCH=$(uname -m)
 echo $ARCH
 
 # Docker
-DOCKER_VERSION=18.06.0
+DOCKER_VERSION=18.09.09
 if [[ ${ARCH} == 'x86_64' ]]; then
-  curl -f https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION-ce.tgz | tar xvz && \
+  curl -f https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_VERSION.tgz | tar xvz && \
   mv docker/docker /usr/bin/ && \
   rm -rf docker
 elif [[ ${ARCH} == 'aarch64' ]]
 then
-  curl -f https://download.docker.com/linux/static/stable/aarch64/docker-$DOCKER_VERSION-ce.tgz | tar xvz && \
+  curl -f https://download.docker.com/linux/static/stable/aarch64/docker-$DOCKER_VERSION.tgz | tar xvz && \
   mv docker/docker /usr/bin/ && \
   rm -rf docker
 else
